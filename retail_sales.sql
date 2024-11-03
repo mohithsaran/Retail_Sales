@@ -95,12 +95,12 @@ AND quantity>10
 AND sale_date BETWEEN '2022-11-01' AND '2022-11-30';
 
 --3) Write a SQL query to calculate the total sales (total_sale) for each category.
-SELECT category,SUM(total_sale)
+SELECT category,SUM(total_sale) as sum_of_total_sales
 FROM retail_sales
 GROUP BY 1;
 
 --4) Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.
-SELECT ROUND(AVG(age))
+SELECT ROUND(AVG(age)) as avg_age
 FROM retail_sales
 WHERE category='Beauty';
 
@@ -110,7 +110,7 @@ FROM retail_sales
 WHERE total_sale>1000;
 
 --6) Write a SQL query to find the total number of transactions (transaction_id) made by each gender in each category.
-SELECT gender,category,COUNT(*)
+SELECT gender,category,COUNT(*) as total_trans
 FROM retail_sales
 GROUP BY 1,2;
 
@@ -138,7 +138,7 @@ LIMIT 5;
 
 --9) Write a SQL query to find the number of unique customers who purchased items from each category.
 SELECT category,
-COUNT(DISTINCT customer_id)
+COUNT(DISTINCT customer_id) as unique_customers
 FROM retail_sales
 GROUP BY 1;
 
